@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="home_town_array" >
+        <item>Hà Nội</item>
+        <item>Thái Nguyên</item>
+        <item>Thái Bình</item>
+        <item>Bình Dương</item>
+        <item>Bình Định</item>
+    </string-array>
+</resources>

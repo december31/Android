@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BT_2023_01_13</string>
+    <string name="demonstrate">demonstrate</string>
+    <string name="add">add</string>
+    <string name="name">Họ và tên</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="default_spinner_item">Quê quán</string>
+</resources>
