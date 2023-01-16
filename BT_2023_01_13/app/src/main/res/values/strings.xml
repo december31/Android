@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BT_2023_01_13</string>
+    <string name="name">Họ và tên</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="add">add</string>
+    <string name="missing_name_hint">Xin hãy nhập tên</string>
+    <string name="missing_phone_number_hint">Xin hãy nhập số điện thoại</string>
+    <string name="demonstrate">demonstrate</string>
 </resources>
