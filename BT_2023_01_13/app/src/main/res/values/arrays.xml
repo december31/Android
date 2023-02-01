@@ -7,4 +7,10 @@
         <item>Nam Định</item>
         <item>Hà Nội</item>
     </string-array>
+    <string-array name="hobby">
+        <item>soccer</item>
+        <item>volleyball</item>
+        <item>coding</item>
+        <item>others</item>
+    </string-array>
 </resources>

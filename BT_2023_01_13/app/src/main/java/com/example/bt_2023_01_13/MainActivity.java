@@ -4,16 +4,18 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
-import android.widget.RadioButton;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import com.example.bt_2023_01_13.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
 	private ActivityMainBinding binding;
 	private ArrayAdapter<String> listViewAdapter;
+	ArrayList<CheckBox> checkBoxes;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,12 +33,29 @@ public class MainActivity extends AppCompatActivity {
 
 	private void listener() {
 		binding.button.setOnClickListener(v -> {
+			StringBuilder hb = new StringBuilder();
+			for (CheckBox checkBox : checkBoxes) {
+				if (checkBox.isChecked()) {
+					hb.append(checkBox.getText() + " / ");
+				}
+			}
+
+			EditText name = findViewById(R.id.name);
+			EditText phoneNumber = findViewById(R.id.phoneNumber);
+			RadioGroup rg = findViewById(R.id.radio_group);
+			RadioButton rd = rg.findViewById(rg.getCheckedRadioButtonId());
+
+			listViewAdapter.add(
+					name.getText().toString() + phoneNumber.getText().toString() + rd.getText().toString()
+			);
+
 			if(validateInput()) {
 				listViewAdapter.add(
 						binding.name.getText().toString() + " - " +
 						binding.phoneNumber.getText().toString() + " - " +
 						((RadioButton)binding.radioGroup.findViewById(binding.radioGroup.getCheckedRadioButtonId())).getText() + " - " +
-						binding.spinner.getSelectedItem()
+						binding.spinner.getSelectedItem() + " - " +
+						hb
 				);
 				resetInput();
 			}
@@ -85,8 +104,21 @@ public class MainActivity extends AppCompatActivity {
 		arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		binding.spinner.setAdapter(arrayAdapter);
 
-		listViewAdapter = new ArrayAdapter<>(this, R.layout.list_view_item, R.id.text_view);
+		listViewAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, R.id.text_view);
 		binding.listView.setAdapter(listViewAdapter);
+
+		String[] hobbies = getResources().getStringArray(R.array.hobby);
+		checkBoxes = new ArrayList<>();
+
+		LinearLayout checkBoxContainer = findViewById(R.id.checkbox_container);
+		for (String hobby : hobbies) {
+			CheckBox checkBox = new CheckBox(this);
+			checkBox.setText(hobby);
+			checkBoxes.add(
+				checkBox
+			);
+			checkBoxContainer.addView(checkBox);
+		}
 
 	}
 

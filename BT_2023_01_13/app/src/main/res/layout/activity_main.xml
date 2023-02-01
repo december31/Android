@@ -37,7 +37,6 @@
                 android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
         </RadioGroup>
 
         <Spinner
@@ -45,6 +44,14 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/checkbox_container"
+            android:paddingVertical="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </LinearLayout>
 
         <Button
             android:layout_gravity="center_horizontal"
