@@ -1,6 +1,7 @@
 package com.example.bt_2023_01_13;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,8 +15,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
 	private ActivityMainBinding binding;
-	private ArrayAdapter<String> listViewAdapter;
+	private ArrayAdapter<User> listViewAdapter;
 	ArrayList<CheckBox> checkBoxes;
+	private static long SelectedItemId;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,23 +47,17 @@ public class MainActivity extends AppCompatActivity {
 			RadioGroup rg = findViewById(R.id.radio_group);
 			RadioButton rd = rg.findViewById(rg.getCheckedRadioButtonId());
 
-			listViewAdapter.add(
-					name.getText().toString() + phoneNumber.getText().toString() + rd.getText().toString()
-			);
 
 			if(validateInput()) {
-				listViewAdapter.add(
-						binding.name.getText().toString() + " - " +
-						binding.phoneNumber.getText().toString() + " - " +
-						((RadioButton)binding.radioGroup.findViewById(binding.radioGroup.getCheckedRadioButtonId())).getText() + " - " +
-						binding.spinner.getSelectedItem() + " - " +
-						hb
-				);
-				resetInput();
+				listViewAdapter.add(new User (name.getText().toString(), phoneNumber.getText().toString()));
 			}
+
+		});
+		binding.listView.setOnItemLongClickListener((parent, view, position, id) -> {
+			Intent intent = new Intent();
+			return false;
 		});
 	}
-
 	private boolean validateInput() {
 		boolean result1 = true;
 		boolean result2 = true;

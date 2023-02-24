@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="androidx.core.content.ContextCompat"/>
+        <variable
+            name="data"
+            type="com.example.recyclerviewexample.User" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        tools:context=".DetailsActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:src="@{ContextCompat.getDrawable(context, data.imageResId)}"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="30dp"
+            android:layout_height="500dp"/>
+
+        <EditText
+            android:text="@{data.name}"
+            android:id="@+id/name"
+            android:hint="@string/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:text="@{data.phoneNumber}"
+            android:id="@+id/phone_number"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/save"
+            android:text="@string/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
+
